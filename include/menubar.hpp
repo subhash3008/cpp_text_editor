@@ -1,7 +1,7 @@
 /**
  * @file menubar.hpp
  * @author Subhash Chandra
- * @brief 
+ * @brief declares class menubar to have menu functionality
  * @version 0.1
  * @date 2023-07-18
  * 
@@ -13,9 +13,16 @@
 #define MENUBAR_HPP
 
 /******************************************************
- * User Defined includes
+ * Library includes
  *****************************************************/
 #include <SFML/Graphics.hpp>
+#include <vector>
+#include <string>
+
+/******************************************************
+ * User Defined includes
+ *****************************************************/
+#include "menuitem.hpp"
 
 
 /******************************************************
@@ -31,6 +38,12 @@ private:
   // shape object to hold menu bar in the editor
   static sf::RectangleShape m_menu;
   static sf::Texture m_menu_texture;
+
+  // icon paths for menu items
+  static std::vector<std::string> m_items_icon_paths;
+
+  // item options in menu bar
+  std::vector<MenuItem> m_items;
 
 public:
   /**

@@ -1,7 +1,7 @@
 /**
  * @file menuitem.hpp
  * @author Subhash Chandra
- * @brief 
+ * @brief Declares class for menu item to be used in menu bar
  * @version 0.1
  * @date 2023-07-18
  * 
@@ -16,6 +16,11 @@
  * Library includes
  *****************************************************/
 #include <SFML/Graphics.hpp>
+#include <string>
+
+/******************************************************
+ * Global Declarations
+ *****************************************************/
 
 
 /******************************************************
@@ -28,23 +33,41 @@
 class MenuItem
 {
 private:
-  sf::Sprite sprite;
+  // texture and sprite to hold the menu item icon
+  static sf::Texture m_texture;
+  static sf::Sprite m_sprite;
 
+  static int m_id_counter;
+
+  int m_id;
   bool m_isActive;
 
 public:
+
+  /**
+   * @brief Construct a new MenuItem object
+   *
+   */
+  MenuItem(const std::string icon_path, const sf::Vector2f item_pos);
+
   /**
    * @brief updates the view of the menu item
    * 
    */
-  virtual void update() noexcept;
+  void update() noexcept;
 
   /**
    * @brief udraws the menu item on display buffer
    * 
    */
-  virtual void draw(sf::RenderWindow& window) noexcept;
+  void draw(sf::RenderWindow& window) noexcept;
 
-}
+  /**
+   * @brief function to check if current menu item is active
+   * 
+   */
+  bool isItemActive();
+
+};
 
 #endif // MENUITEM_HPP

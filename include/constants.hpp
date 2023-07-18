@@ -11,6 +11,9 @@
 #ifndef CONSTANTS_HPP
 #define CONSTANTS_HPP
 
+#include <vector>
+#include <string>
+
 struct CONSTANTS
 {
   // background color for text editor
@@ -25,6 +28,12 @@ struct CONSTANTS
   static constexpr int MENUBAR_COLOR_R = 61;
   static constexpr int MENUBAR_COLOR_G = 71;
   static constexpr int MENUBAR_COLOR_B = 90;
+
+  // count of total menu items
+  static constexpr int MENUITEMS_COUNT = 3;
+
+  // width of the menu item
+  static constexpr float MENUITEM_WIDTH = 30.0f;
 };
 
 

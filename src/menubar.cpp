@@ -1,7 +1,7 @@
 /**
  * @file menubar.cpp
  * @author Subhash Chandra
- * @brief 
+ * @brief defines the menubar class
  * @version 0.1
  * @date 2023-07-18
  * 
@@ -24,6 +24,13 @@
 // initialize menu shape of the 
 sf::RectangleShape Menubar::m_menu;
 sf::Texture Menubar::m_menu_texture;
+
+
+std::vector<std::string> Menubar::m_items_icon_paths = {
+  "./assets/file.png",    /* m_id = 0 */
+  "./assets/open.png",    /* m_id = 1 */
+  "./assets/save.png"     /* m_id = 2 */
+};
 
 /******************************************************
  * Member Functions
@@ -55,6 +62,19 @@ Menubar::Menubar(const sf::Vector2u window_size)
 
   // // set texture
   // m_menu.setTexture(&m_menu_texture);
+
+  // initialize menu items in the menu bar
+  for (int i = 0; i < CONSTANTS::MENUITEMS_COUNT; ++i)
+  {
+    // instantiate a menu item
+    MenuItem item(
+      m_items_icon_paths[i],
+      sf::Vector2f({(static_cast<float>(i) * CONSTANTS::MENUITEM_WIDTH), 2.0f})
+    );
+
+    // append the menu item to menubar
+    m_items.push_back(item);
+  }
 }
 
 /**
@@ -79,5 +99,12 @@ Menubar::update(const sf::Vector2u window_size) noexcept
 void
 Menubar::draw(sf::RenderWindow& window) noexcept
 {
+  // draw the menu bar
   window.draw(m_menu);
+
+  // draw the menu items
+  for (int i = 0; i < CONSTANTS::MENUITEMS_COUNT; ++i)
+  {
+    m_items.at(i).draw(window);
+  }
 }
